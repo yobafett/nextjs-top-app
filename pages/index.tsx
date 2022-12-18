@@ -1,5 +1,5 @@
 import React from 'react';
-import { Htag, Button, Ptag } from '../components';
+import { Htag, Button, Ptag, Tag } from '../components';
 
 export default function Home(): JSX.Element {
   return (
@@ -11,21 +11,14 @@ export default function Home(): JSX.Element {
       <Button appearance='ghost'>qwe</Button>
       <Button appearance='primary' arrow='right'>qwe</Button>
       <Button appearance='ghost' arrow='down'>qwe</Button>
-      <Ptag size='s'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, maxime possimus?
-        Maiores, suscipit ex fugit quas, doloremque iusto debitis dolor numquam tenetur
-        quis vitae ullam alias voluptatum cum incidunt quo?
-      </Ptag>
-      <Ptag size='m'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, maxime possimus?
-        Maiores, suscipit ex fugit quas, doloremque iusto debitis dolor numquam tenetur
-        quis vitae ullam alias voluptatum cum incidunt quo?
-      </Ptag>
-      <Ptag size='l'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, maxime possimus?
-        Maiores, suscipit ex fugit quas, doloremque iusto debitis dolor numquam tenetur
-        quis vitae ullam alias voluptatum cum incidunt quo?
-      </Ptag>
+      <Ptag size='s'>Lorem ipsum dolor</Ptag>
+      <Ptag size='m'>Lorem ipsum dolor</Ptag>
+      <Ptag size='l'>Lorem ipsum dolor</Ptag>
+      <Tag size='s' color='ghost' href='/One'>One</Tag>
+      <Tag size='s' color='primary'>Two</Tag>
+      <Tag size='m' color='green'>Three</Tag>
+      <Tag size='m' color='gray'>Four</Tag>
+      <Tag size='m' color='red'>Five</Tag>
     </>
   );
 }
