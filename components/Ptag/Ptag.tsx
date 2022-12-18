@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 export const Ptag = ({ size, children, className, ...props }: PtagProps): JSX.Element => {
     return (
-        <h3 {...props} className={
+        <p {...props} className={
             classNames(
                 className,
                 styles.p,
@@ -15,6 +15,6 @@ export const Ptag = ({ size, children, className, ...props }: PtagProps): JSX.El
                     [styles.m]: size == 'm',
                     [styles.l]: size == 'l'
                 }
-            )}>{children}</h3>
+            )}>{children}</p>
     )
 }
