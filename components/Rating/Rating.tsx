@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import React, { KeyboardEvent, useEffect, useState } from 'react'
 import { RatingProps } from './Rating.props'
 import styles from './Rating.module.css';
 import classNames from 'classnames';
@@ -12,14 +12,46 @@ export const Rating = ({ isEditable = false, rating, setRating, ...props }: Rati
         constructRating(rating);
     }, [rating]);
 
+    const changeDisplay = (i: number): void => {
+        if (isEditable) {
+            constructRating(i);
+        }
+    };
+
+    const updateRating = (i: number): void => {
+        if (isEditable && setRating) {
+            setRating(i);
+        }
+    }
+
+    const handleSpace = (i: number, e: KeyboardEvent<SVGElement>): void => {
+        if (e.code == 'Space') {
+            updateRating(i);
+        }
+    }
+
     const constructRating = (currentRating: number): void => {
-        const updatedArray = ratingArray.map((r: JSX.Element, i: Number) => {
-            return <StarIcon className={
-                classNames(
-                    styles.star,
-                    { [styles.filled]: i < currentRating }
-                )
-            } />
+        const updatedArray = ratingArray.map((r: JSX.Element, i: number) => {
+            return (
+                <span
+                    className={
+                        classNames(
+                            styles.star,
+                            {
+                                [styles.filled]: i < currentRating,
+                                [styles.editable]: isEditable
+                            }
+                        )}
+                    onMouseEnter={() => changeDisplay(i + 1)}
+                    onMouseLeave={() => changeDisplay(rating)}
+                    onClick={() => updateRating(i + 1)}
+                >
+                    <StarIcon
+                        tabIndex={isEditable ? 0 : -1}
+                        onKeyDown={(e: KeyboardEvent<SVGElement>) => handleSpace(i + 1, e)}
+                    />
+                </span>
+            )
         })
 
         setRatingArray(updatedArray);
